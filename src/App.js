@@ -48,9 +48,11 @@ function App() {
       </div>
      
      <div className='app__stats'>
-      <InfoBox />
-      <InfoBox />
-      <InfoBox />
+      <InfoBox title='Coronavirus Cases' cases={123} total={2000}/>
+
+      <InfoBox title='Recovered' cases={1234} total={3000}/>
+
+      <InfoBox title='Deaths'cases={1235} total={4000}/>
      </div>
 
       {/* Table */}
