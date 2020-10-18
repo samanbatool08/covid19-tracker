@@ -7,6 +7,7 @@ import {
   CardContent,
 } from '@material-ui/core';
 import InfoBox from './InfoBox';
+import Map from './Map';
 import './App.css';
 
 function App() {
@@ -57,6 +58,8 @@ function App() {
 
       {/* Table */}
       {/* Graph */}
+
+      <Map />
 
     </div>
   );
