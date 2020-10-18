@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
 } from '@material-ui/core';
+import InfoBox from './InfoBox';
 import './App.css';
 
 function App() {
@@ -45,12 +46,12 @@ function App() {
           </Select>
         </FormControl>
       </div>
-      {/* Header */}
-      {/* Ttitle + Select Input dropdown field */}
-
-      {/* Infobox */}
-      {/* Infobox */}
-      {/* Infobox */}
+     
+     <div className='app__stats'>
+      <InfoBox />
+      <InfoBox />
+      <InfoBox />
+     </div>
 
       {/* Table */}
       {/* Graph */}
