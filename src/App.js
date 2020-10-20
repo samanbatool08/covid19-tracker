@@ -58,10 +58,14 @@ function App() {
       <InfoBox title='Deaths'cases={1235} total={4000}/>
      </div>
 
+
+      <Map />
+      </div>
+
+      <div className='app__right'>
       {/* Table */}
       {/* Graph */}
 
-      <Map />
       </div>
     </div>
   );
