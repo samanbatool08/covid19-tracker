@@ -62,11 +62,15 @@ function App() {
       <Map />
       </div>
 
-      <div className='app__right'>
+      <Card className='app__right'>
+        <CardContent>
+            <h3>Live Cases by Country</h3>
       {/* Table */}
+            <h3>Worldwide new cases</h3>
       {/* Graph */}
+        </CardContent>
 
-      </div>
+      </Card>
     </div>
   );
 }
