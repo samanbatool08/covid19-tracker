@@ -13,6 +13,7 @@ import './App.css';
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
+  const [countryInfo, setCountryInfo] = useState({});
 
   useEffect(() => {
     const getCountriesData = async () => {
@@ -29,9 +30,27 @@ function App() {
     getCountriesData()
   }, [])
 
-  const onCountryChange =  (event) => {
+  const onCountryChange =  async (event) => {
     const countryCode = event.target.value;
-    setCountry(countryCode)
+
+    const url = countryCode === 'worldwide' 
+    ? 'https://disease.sh/v3/covid-19/all' 
+    : `https://disease.sh/v3/covid-19/countries/${countryCode}`
+
+    await fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        setCountry(countryCode)
+        setCountryInfo(data)
+    })
+
+
+    console.log("COUNTRY INFO", countryInfo)
+    
+    // worldwide
+    // https://disease.sh/v3/covid-19/all
+    // https://disease.sh/v3/covid-19/countries/[COUNTRY_CODE]
+
   }
 
   return (
