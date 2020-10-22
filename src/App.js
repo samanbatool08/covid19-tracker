@@ -15,6 +15,14 @@ function App() {
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
 
+  useEffect(() =>  {
+    fetch("https://disease.sh/v3/covid-19/all")
+    .then(response => response.json())
+    .then(data => {
+      setCountryInfo(data)
+    })
+  }, [])
+
   useEffect(() => {
     const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
@@ -66,11 +74,11 @@ function App() {
       </div>
      
      <div className='app__stats'>
-      <InfoBox title='Coronavirus Cases' cases={123} total={2000}/>
+      <InfoBox title='Coronavirus Cases' cases={countryInfo.todayCases} total={countryInfo.cases}/>
 
-      <InfoBox title='Recovered' cases={1234} total={3000}/>
+      <InfoBox title='Recovered' cases={countryInfo.todayRecovered} total={countryInfo.recovered}/>
 
-      <InfoBox title='Deaths'cases={1235} total={4000}/>
+      <InfoBox title='Deaths'cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>
      </div>
 
 
