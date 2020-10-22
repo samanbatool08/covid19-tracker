@@ -40,18 +40,14 @@ function App() {
     await fetch(url)
     .then(response => response.json())
     .then(data => {
+      // console.log(data)
         setCountry(countryCode)
         setCountryInfo(data)
     })
-
-
-    console.log("COUNTRY INFO", countryInfo)
-    
-    // worldwide
-    // https://disease.sh/v3/covid-19/all
-    // https://disease.sh/v3/covid-19/countries/[COUNTRY_CODE]
-
   }
+
+  console.log("COUNTRY INFO", countryInfo)
+
 
   return (
     <div className="app">
