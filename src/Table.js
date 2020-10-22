@@ -5,8 +5,8 @@ function Table({countries}) {
         <div className='table'>
             {countries.map(country => (
                  <tr>
-                     <td></td>
-                     <td></td>
+                     <td>{country.country}</td>
+                     <td><strong>{country.cases}</strong></td>
                  </tr>
             ))}
             
