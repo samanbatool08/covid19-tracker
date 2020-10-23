@@ -14,6 +14,23 @@ function LineGraph() {
         })
     }, [])
 
+    const buildChartData = (data, casesType='cases') => {
+        const chartData = [];
+        let lastDataPoint;
+
+        data[casesType].cases.forEach(date => {
+            if(lastDataPoint){
+                const newDataPoint = {
+                    x: date, 
+                    y: data[casesType][date] - lastDataPoint
+                }
+                chartData.push(newDataPoint)
+            }
+            lastDataPoint = data['cases']
+        })
+        return chartData; 
+    }
+
     return (
         <div>
             <h1>I am a graph</h1>
