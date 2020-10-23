@@ -9,7 +9,9 @@ import {
 import InfoBox from './InfoBox';
 import Map from './Map';
 import Table from './Table';
+import LineGraph from './LineGraph';
 import './App.css';
+import {sortData} from './util.js';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -35,7 +37,10 @@ function App() {
               name: country.country, // United States, United Kingdom
               value: country.countryInfo.iso2, // UK, USA, FR
             }));
-        setTableData(data)
+
+        const sortedData = sortData(data)
+        // sorted version 
+        setTableData(sortedData)
         setCountries(countries)
       })};
     getCountriesData()
@@ -94,6 +99,7 @@ function App() {
       {/* Table */}
             <Table countries={tableData}/>
             <h3>Worldwide new cases</h3>
+            <LineGraph />
       {/* Graph */}
         </CardContent>
 
