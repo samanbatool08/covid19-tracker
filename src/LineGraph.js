@@ -3,25 +3,28 @@ import { Line } from 'react-chartjs-2';
 
 function LineGraph() {
     const [data, setData] = useState({});
-
+    
     // endpoint: https://disease.sh/v3/covid-19/historical/all?lastdays=120
-
- 
-    const buildChartData = (data, casesType = "cases") => {
+    
+    const buildChartData = (data, casesType) => {
+        console.log('data', typeof data)
+        
+     
         const chartData = [];
         let lastDataPoint;
-        data[casesType].forEach((date) => {
+        for (let date in data.cases) {
             if (lastDataPoint) {
-                const newDataPoint = {
-                    x: date, 
-                    y: data[casesType][date] - lastDataPoint,
-                };
+                let newDataPoint = {
+                    x: date,
+                    y: data[casesType][date] - lastDataPoint
+                }
                 chartData.push(newDataPoint)
             }
             lastDataPoint = data[casesType][date]
-        })
+        }
         return chartData; 
     };
+ 
 
     useEffect(() => {
         fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
@@ -36,10 +39,7 @@ function LineGraph() {
     return (
         <div>
             <h1>I am a graph</h1>
-            {/* <Line 
-                data
-                options
-            /> */}
+            {/* <Line data options /> */}
         </div>
     )
 }
